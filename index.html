@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fredrick Maina - Coming Soon</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Welcome to Fredrick Maina's Portfolio" />
+  <meta
+    property="og:description"
+    content="My portfolio is launching soon! Check out my projects and get in touch. 🚀"
+  />
+  <meta property="og:image" content="https://fredmaina.com/fred.png" />
+  <meta property="og:url" content="https://fredmaina.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Welcome to Fredrick Maina's Portfolio" />
+  <meta
+    name="twitter:description"
+    content="My portfolio is launching soon! Stay tuned. 🚀"
+  />
+  <meta name="twitter:image" content="https://fredmaina.com/fred.png" />
+  <meta name="twitter:url" content="https://fredmaina.com" />
+
+  <style>
+    /* Base (Mobile-first) */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #1b1b22; /* Dark background for contrast */
+      color: #ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Title Gradient Animation */
+    .title-gradient {
+      background: linear-gradient(90deg, #00ffd9, #00b3ff);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientText 3s infinite alternate;
+    }
+    @keyframes gradientText {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* Cursor effect (hidden until DOM loaded) */
+    .cursor-pattern {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, transparent 50%);
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.1s;
+      z-index: 50;
+      display: none; /* Shown after page load */
+    }
+
+    /* Social Icons Hover */
+    .social-icons a {
+      transition: transform 0.15s ease-in-out, box-shadow 0.2s;
+      font-size: 2rem; /* Larger icons on mobile */
+      color: #ffffff;
+    }
+    .social-icons a:hover {
+      transform: scale(1.1);
+      color: #00ffd9; /* Neon accent on hover */
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Mobile Menu (slides in from the right) */
+    #mobile-menu {
+      transition: transform 0.3s ease-in-out;
+      width: 70%;             /* Covers part of the screen */
+      height: 100vh;          /* Full viewport height */
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: #1b1b22;
+      transform: translateX(100%); /* Hidden by default */
+      z-index: 9999; /* Above everything else */
+    }
+    .mobile-menu-visible {
+      transform: translateX(0);
+    }
+
+    /* Desktop - hide mobile menu container, show normal nav */
+    @media (min-width: 768px) {
+      #mobile-menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="w-full px-4 py-3 fixed top-0 z-20 flex items-center justify-between bg-[#1b1b22] shadow-sm">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <img src="fred.png" alt="Fredrick Maina Logo" class="w-8 h-8" />
+      <span class="font-bold text-base sm:text-lg">Fredrick Maina</span>
+    </div>
+
+    <!-- Hamburger (visible on mobile) -->
+    <button id="nav-toggle" class="block md:hidden focus:outline-none">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+
+    <!-- Desktop Menu -->
+    <ul id="nav-menu" class="hidden md:flex space-x-6 text-sm lg:text-base font-medium">
+      <li><a href="#home" class="hover:text-[#00ffd9] transition-colors">Home</a></li>
+      <li><a href="#projects" class="hover:text-[#00ffd9] transition-colors">Projects</a></li>
+      <li><a href="#about" class="hover:text-[#00ffd9] transition-colors">About</a></li>
+      <li><a href="#contact" class="hover:text-[#00ffd9] transition-colors">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu (slides from right to left) -->
+  <div id="mobile-menu">
+    <!-- Close button -->
+    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-700">
+      <span class="font-bold text-base">Menu</span>
+      <button id="nav-close" class="focus:outline-none">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Menu Links -->
+    <ul class="flex flex-col items-start space-y-4 py-4 px-6 font-medium">
+      <li><a href="#home" class="hover:text-[#00ffd9]" onclick="closeMenu()">Home</a></li>
+      <li><a href="#projects" class="hover:text-[#00ffd9]" onclick="closeMenu()">Projects</a></li>
+      <li><a href="#about" class="hover:text-[#00ffd9]" onclick="closeMenu()">About</a></li>
+      <li><a href="#contact" class="hover:text-[#00ffd9]" onclick="closeMenu()">Contact</a></li>
+    </ul>
+
+    <!-- Bottom Social Icons -->
+    <div class="absolute bottom-4 left-0 w-full flex justify-center">
+      <div class="flex space-x-6 social-icons">
+        <a href="mailto:support@fredmaina.com">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/fredmaina">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/fred-maina/">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://wa.me/254743039297?text=Hey%20Fredrick!%20When%20will%20your%20portfolio%20be%20ready?">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content / Hero Section -->
+  <main id="home" class="flex flex-col items-center justify-center flex-grow text-center pt-16 px-4 sm:pt-20 md:pt-24">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 title-gradient">
+      Welcome to Fredrick Maina's Portfolio
+    </h1>
+    <p class="mt-2 text-sm sm:text-base md:text-lg lg:text-xl">
+      It will be up and running in no time! <i class="fas fa-rocket"></i>
+    </p>
+    <p class="mt-2 text-xs sm:text-sm md:text-base lg:text-lg">
+      In the meantime, check out my projects or get in touch.
+    </p>
+
+    <!-- Social Icons (hero) - bigger on mobile -->
+    <div class="mt-6 flex space-x-6 social-icons">
+      <a href="mailto:support@fredmaina.com" class="text-2xl">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/fredmaina" class="text-2xl">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/fred-maina/" class="text-2xl">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://wa.me/254743039297?text=Hey%20Fredrick!%20When%20will%20your%20portfolio%20be%20ready?" class="text-2xl">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="w-full py-4 bg-[#1b1b22] text-center border-t border-gray-700">
+    <p class="text-xs sm:text-sm">&copy; 2025 Fredrick Maina. All rights reserved.</p>
+  </footer>
+
+  <!-- Cursor Effect (hidden until loaded) -->
+  <div class="cursor-pattern" id="cursor-pattern"></div>
+
+  <script>
+    // Mobile Menu Toggle
+    const navToggle = document.getElementById("nav-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navClose = document.getElementById("nav-close");
+
+    navToggle.addEventListener("click", () => {
+      mobileMenu.classList.add("mobile-menu-visible");
+    });
+
+    navClose.addEventListener("click", closeMenu);
+
+    function closeMenu() {
+      mobileMenu.classList.remove("mobile-menu-visible");
+    }
+
+    // Defer cursor effect until window load
+    window.addEventListener("load", () => {
+      const cursor = document.getElementById("cursor-pattern");
+      // Show the cursor element now that everything is loaded
+      cursor.style.display = "block";
+
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
